@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} {{ user.username }} {% endblock %}
+{% block body %}
+
+<h2>Profile</h2>
+{% if user.user_profile %}
+<img class="rounded-circle" src="/media/{{ user.user_profile.profile_pic }}">
+{% else %}
+<img class="rounded-circle" style="width:150px; height
+:150px" src="/media/avater.png">
+<br>
+<a href="{% url 'update_profile_pic' %}" class="btn btn-info btn-sm">Change Profile</a>
+{% endif%}
+<h2>{{ user.username }}</h2>
+<p>{{ user.first_name}} {{ user.last_name }}</p>
+<p>{{ user.email }}</p>
+<br>
+<a href="{% url 'update_profile' %}" class="btn btn-primary">Update Profile</a>
+
+
+{% endblock %}
